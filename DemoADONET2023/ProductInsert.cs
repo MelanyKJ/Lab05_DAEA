@@ -8,26 +8,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace DemoADONET2023
 {
-    public partial class NuevaRegion : Form
+    public partial class ProductInsert : Form
     {
-        public NuevaRegion()
+        public ProductInsert()
         {
             InitializeComponent();
         }
 
-        private void Grabar_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
 
             try
             {
-                BRegion negocio = new BRegion();
-                negocio.Insertar(new Entidad.Region
+                BProducto negocio = new BProducto();
+                negocio.Insertar(new Entidad.Producto
                 {
-                    Code = txtCode.Text,
-                    Description = txtDescription.Text,
+                    IdProducto=int.Parse(txtId.Text),
+                    Nombre = txtNombre.Text,
+                    Precio = int.Parse(txtPrecio.Text),
+                    FechaCreacion=DateTime.Parse(dtpFecha.Text)
                 });
                 MessageBox.Show("Registro exitoso");
             }
@@ -36,7 +39,7 @@ namespace DemoADONET2023
                 MessageBox.Show("Error");
 
             }
-            
+
 
         }
     }
